@@ -19,10 +19,25 @@ class WeatherCard extends StatelessWidget {
     }
 
     return Card(
-      child: ListTile(
-        leading: Image.network(weather.iconUrl),
-        title: Text(weather.condition),
-        subtitle: Text("${weather.temperature.toStringAsFixed(1)} °C"),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Row(
+          children: [
+            Image.network(weather.iconUrl, width: 32, height: 32),
+            const SizedBox(width: 12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  weather.condition,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text("${weather.temperature.toStringAsFixed(1)} °C"),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
